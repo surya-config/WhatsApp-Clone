@@ -2,6 +2,7 @@
   flex: 0.65;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .chat__header {
@@ -33,8 +34,7 @@
   background-repeat: repeat;
   background-position: center;
   padding: 30px;
-  overflow: scroll;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .chat__message {
@@ -91,4 +91,8 @@
 .chat__footer > .MuiSvgIcon-root {
   padding: 10px;
   color: gray;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

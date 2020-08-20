@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/Chat.css";
 import { Avatar, IconButton } from "@material-ui/core";
 import {
@@ -20,6 +20,11 @@ function Chat() {
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [{ user }, dispatch] = useStateValue();
+  const el = useRef(null);
+
+  useEffect(() => {
+    el.current.scrollIntoView({ block: "end", behavior: "smooth" });
+  });
 
   useEffect(() => {
     if (roomId) {
@@ -59,7 +64,7 @@ function Chat() {
           <p>
             {new Date(
               messages[messages.length - 1]?.timestamp?.toDate()
-            ).toUTCString()}
+            ).toString()}
           </p>
         </div>
 
@@ -85,10 +90,11 @@ function Chat() {
             <span className="chat__name ">{message.name}</span>
             {message.message}
             <span className="chat__timeStamp">
-              {new Date(message.timestamp?.toDate()).toUTCString()}
+              {new Date(message.timestamp?.toDate()).toLocaleString()}
             </span>
           </p>
         ))}
+        <div id={"el"} ref={el}></div>
       </div>
       <div className="chat__footer">
         <InsertEmoticon />

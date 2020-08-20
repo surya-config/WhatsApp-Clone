@@ -54,5 +54,8 @@
   background-color: white;
   flex: 1;
   overflow: scroll;
-  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
